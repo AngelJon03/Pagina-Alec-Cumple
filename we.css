@@ -1,0 +1,116 @@
+:root {
+  --contador-scale: 1;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-image: url('https://s2.best-wallpaper.net/wallpaper/1366x768/1902/Garden-colorful-tulips-trees_1366x768.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 20px;
+}
+
+.contador {
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: scale(var(--contador-scale));
+  transform-origin: top left;
+  margin-bottom: 20px;
+}
+
+.contador-superior {
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+.contador-inferior {
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.recuadro-continuar {
+  background-color: white;
+  width: 300px;
+  height: 180px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: navy !important;
+  text-shadow: 2px 2px 4px rgb(0, 255, 234);
+  font-family: "Georgia", serif;
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #ff0000;
+  text-align: center;
+}
+
+span {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ce2406da;
+  text-shadow: 2px 2px 4px rgb(255, 0, 0, 0.712);
+  animation-name: caida;
+  animation-duration: 1s;
+}
+
+@keyframes caida {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(50%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: yellow;
+  border-radius: 10px;
+}
+
+/* Cambio en el segundo contador */
+.contador.contador-superior-derecha h1 {
+  color: purple !important;
+  text-shadow: 2px 2px 4px rgb(128, 0, 128);
+}

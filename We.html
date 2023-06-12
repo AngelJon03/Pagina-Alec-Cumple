@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TE AMO ALESSANDRA</title>
+  <style>
+    :root {
+      --contador-scale: 1;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background-image: url('https://s2.best-wallpaper.net/wallpaper/1366x768/1902/Garden-colorful-tulips-trees_1366x768.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      max-width: 600px;
+      margin: 20px;
+    }
+
+    .contador {
+      text-align: center;
+      background-color: rgb(255, 255, 255);
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transform: scale(var(--contador-scale));
+      transform-origin: top left;
+      margin-bottom: 20px;
+    }
+
+    .contador-superior {
+      align-self: flex-start;
+      margin-right: auto;
+    }
+
+    .contador-inferior {
+      text-align: center;
+      align-self: center;
+    }
+
+    .recuadro-continuar {
+      background-color: white;
+      width: 300px;
+      height: 180px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 20px auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: navy !important;
+      text-shadow: 2px 2px 4px rgb(0, 255, 234);
+      font-family: "Georgia", serif;
+      text-align: center;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: #ff0000;
+      text-align: center;
+    }
+
+    span {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ce2406da;
+      text-shadow: 2px 2px 4px rgb(255, 0, 0, 0.712);
+      animation-name: caida;
+      animation-duration: 1s;
+    }
+
+    @keyframes caida {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(50%);
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: yellow;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="contador contador-superior">
+      <h1>Tiempo de Espera para Cumpleaños de Alessandra</h1>
+      <p>Días: <span id="dias"></span></p>
+      <p>Horas: <span id="horas"></span></p>
+      <p>Minutos: <span id="minutos"></span></p>
+      <p>Segundos: <span id="segundos"></span></p>
+    </div>
+    <div class="contador contador-inferior">
+      <h1>Te Amo</h1>
+    </div>
+    <div class="recuadro-continuar">
+      <h1>Presiona el Boton de Continuar para ver la Sorpresa</h1>
+      <input type="text" id="cuadro-texto" placeholder="Presiona el botón para verlo">
+      <button id="boton-continuar">Continuar</button>
+    </div>
+  </div>
+
+  <script>
+    function calcularTiempoRestante() {
+      var fechaObjetivo = new Date("August 1, 2023 00:00:00").getTime();
+      var ahora = new Date().getTime();
+      var tiempoRestante = fechaObjetivo - ahora;
+
+      var segundos = Math.floor(tiempoRestante / 1000 % 60);
+      var minutos = Math.floor(tiempoRestante / 1000 / 60 % 60);
+      var horas = Math.floor(tiempoRestante / (1000 * 60 * 60) % 24);
+      var dias = Math.floor(tiempoRestante / (1000 * 60 * 60 * 24));
+
+      return {
+        'dias': dias,
+        'horas': horas,
+        'minutos': minutos,
+        'segundos': segundos
+      };
+    }
+
+    function actualizarContador() {
+      var tiempo = calcularTiempoRestante();
+
+      document.getElementById('dias').innerHTML = tiempo.dias;
+      document.getElementById('horas').innerHTML = tiempo.horas;
+      document.getElementById('minutos').innerHTML = tiempo.minutos;
+      document.getElementById('segundos').innerHTML = tiempo.segundos;
+    }
+
+    window.onload = function() {
+      actualizarContador();
+      setInterval(actualizarContador, 1000);
+
+      document.getElementById('boton-continuar').addEventListener('click', function() {
+        var cuadroTexto = document.getElementById('cuadro-texto');
+        var mensaje = cuadroTexto.value;
+        cuadroTexto.value = '';
+
+        var mensajeDiv = document.createElement('div');
+        mensajeDiv.innerText = mensaje;
+        document.querySelector('.cuadro-blanco').appendChild(mensajeDiv);
+      });
+    };
+  </script>
+</body>
+</html>
